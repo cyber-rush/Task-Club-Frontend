@@ -1,8 +1,18 @@
 
 import { Link } from 'react-router-dom';
 import { login } from '../../assets';
+import { useState } from 'react';
 
 const Login = () => {
+
+    const [data, setData] = useState({
+        email: '',
+        password: ''
+    })
+
+    const loginUser = (e) => {
+        e.preventDefault()
+    }
     return (
         <div className="min-h-screen flex items-center justify-center ">
             <div className="max-w-md w-full md:max-w-full md:flex md:items-center p-8 space-y-4 bg-white rounded-lg ">
@@ -18,7 +28,7 @@ const Login = () => {
                 {/* Form Section */}
                 <div className="md:w-1/2 px-8 md:px-16">
                     <h2 className="text-3xl font-semibold text-gray-800 mb-6">Sign in to Task Club</h2>
-                    <form className="space-y-4">
+                    <form onSubmit={loginUser} className="space-y-4">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium text-gray-600">
                                 Email
@@ -28,6 +38,8 @@ const Login = () => {
                                 type="email"
                                 className="mt-1 p-3 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                                 placeholder="Your email"
+                                value={data.email}
+                                onChange={(e) => setData({ ...data, email: e.target.value })}
                             />
                         </div>
                         <div>
@@ -39,6 +51,8 @@ const Login = () => {
                                 type="password"
                                 className="mt-1 p-3 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                                 placeholder="Your password"
+                                value={data.password}
+                                onChange={(e) => setData({ ...data, password: e.target.value })}
                             />
                         </div>
                         <button
@@ -49,7 +63,7 @@ const Login = () => {
                         </button>
                         <p className="mt-3 text-xs flex justify-between items-center text-[#002D74]">
                             Don't have an account?
-                            <Link to="/signup" className="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300 text-[#002D74]">
+                            <Link to="/register" className="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300 text-[#002D74]">
                                 Sign up
                             </Link>
                         </p>

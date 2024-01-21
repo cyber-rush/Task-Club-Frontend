@@ -1,8 +1,21 @@
 
 import { Link } from 'react-router-dom';
 import { signup } from '../../assets';
+import { useState } from 'react';
 
-const SignupForm = () => {
+const Register = () => {
+
+    const [data, setData] = useState({
+        name: '',
+        username: '',
+        email: '',
+        password: ''
+    })
+
+    const registerUser = (e) => {
+        e.preventDefault()
+    }
+
     return (
         <div className="min-h-screen flex items-center justify-center ">
             <div className="max-w-md w-full md:max-w-full md:flex md:items-center p-8 space-y-4 bg-white rounded-lg ">
@@ -18,7 +31,7 @@ const SignupForm = () => {
                 {/* Form Section */}
                 <div className="md:w-1/2 px-8 md:px-16">
                     <h2 className="text-3xl font-semibold text-gray-800 mb-6">Sign up for Task Club</h2>
-                    <form className="space-y-4">
+                    <form onSubmit={registerUser} className="space-y-4">
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-600">
                                 Name
@@ -28,6 +41,8 @@ const SignupForm = () => {
                                 type="text"
                                 className="mt-1 p-3 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                                 placeholder="Your name"
+                                value={data.name}
+                                onChange={(e) => setData({ ...data, name: e.target.value })}
                             />
                         </div>
                         <div>
@@ -39,6 +54,8 @@ const SignupForm = () => {
                                 type="text"
                                 className="mt-1 p-3 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                                 placeholder="Your username"
+                                value={data.username}
+                                onChange={(e) => setData({ ...data, username: e.target.value })}
                             />
                         </div>
                         <div>
@@ -50,6 +67,8 @@ const SignupForm = () => {
                                 type="email"
                                 className="mt-1 p-3 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                                 placeholder="Your email"
+                                value={data.email}
+                                onChange={(e) => setData({ ...data, email: e.target.value })}
                             />
                         </div>
                         <div>
@@ -61,6 +80,8 @@ const SignupForm = () => {
                                 type="password"
                                 className="mt-1 p-3 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                                 placeholder="Your password"
+                                value={data.password}
+                                onChange={(e) => setData({ ...data, password: e.target.value })}
                             />
                         </div>
                         <div className="flex items-center">
@@ -92,4 +113,4 @@ const SignupForm = () => {
     );
 };
 
-export default SignupForm;
+export default Register;
