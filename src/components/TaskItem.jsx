@@ -34,9 +34,6 @@ const TaskItem = ({ task }) => {
             <select
                 className="p-2 border rounded-md mr-2"
                 value={task.priority}
-            // onChange={(e) => {
-            //     // Handle priority change logic here
-            // }}
             >
                 <option value="1">Priority 1</option>
                 <option value="2">Priority 2</option>
