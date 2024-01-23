@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast"
 import UserProvider from "./context/user/userProvider"
 
 
-axios.defaults.baseURL = `https://task-club-backend.onrender.com`
+axios.defaults.baseURL = 'http://localhost:8000'
 axios.defaults.withCredentials = true
 
 const App = () => {
